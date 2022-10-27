@@ -1,4 +1,6 @@
-import "./leftbar.scss"
+import "./leftbar.scss";
+
+import React from "react";
 
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
@@ -39,5 +41,5 @@ export function Leftbar() {
         </div>
       </div>
     </div>
-  )
+  );
 }

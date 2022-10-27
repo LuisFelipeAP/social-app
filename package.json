@@ -19,10 +19,57 @@
     "sass": "^1.55.0"
   },
   "devDependencies": {
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
     "@vitejs/plugin-react": "^2.2.0",
-    "typescript": "^4.6.4",
+    "eslint": "^8.26.0",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unicorn": "^44.0.2",
+    "postcss-scss": "^4.0.5",
+    "stylelint": "^14.14.0",
+    "stylelint-config-recommended": "^9.0.0",
+    "stylelint-scss": "^4.3.0",
+    "typescript": "^4.8.4",
     "vite": "^3.2.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:unicorn/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "root": true,
+    "rules": {
+      "semi": 2,
+      "unicorn/filename-case": "off",
+      "react/no-unescaped-entities": "off"
+    }
+  },
+  "stylelint": {
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "customSyntax": "postcss-scss",
+    "ignoreFiles": [
+      "**/*.jsx",
+      "**/*.tsx"
+    ],
+    "extends": [
+      "stylelint-config-recommended"
+    ]
   }
 }

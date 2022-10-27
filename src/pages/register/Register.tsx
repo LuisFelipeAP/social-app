@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom"
-import "./register.scss"
+import { Link } from "react-router-dom";
+import React from "react";
+import "./register.scss";
 
 export const Register = () => {
   return (
@@ -26,5 +27,5 @@ export const Register = () => {
             </div>
         </div>
     </div>
-  )
-}
+  );
+};

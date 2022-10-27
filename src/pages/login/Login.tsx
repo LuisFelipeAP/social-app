@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom"
-import "./login.scss"
+import { Link } from "react-router-dom";
+import React from "react";
+import "./login.scss";
 
 export const Login = () => {
   return (
@@ -8,7 +9,7 @@ export const Login = () => {
             <div className="left">
                 <h1>Hello World.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed suscipit, dicta debitis eaque nam, quos dolorem vel voluptatum deserunt cumque voluptatem impedit?</p>
-                <span>Don't you have an account?</span>
+                <span>Don&apos;t you have an account?</span>
                 <Link to="/register">
                     <button>Register</button>
                 </Link>
@@ -24,5 +25,5 @@ export const Login = () => {
             </div>
         </div>
     </div>
-  )
-}
+  );
+};
