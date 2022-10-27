@@ -30,7 +30,7 @@ export function Navbar() {
         <NotificationsOutlinedIcon />
         <div className="user">
           <img src="https://thispersondoesnotexist.com/image" alt="avatar" />
-          <span>Lorem Ipsum</span>
+          <span>Username</span>
         </div>
       </div>
     </div>

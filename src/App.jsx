@@ -18,7 +18,9 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const currentUser = true;
+  const currentUser = {
+    id: -1,
+  };
 
   const Layout = () => {
     return (
@@ -34,7 +36,7 @@ function App() {
   };
 
   const ProtectedRoute = ({ children }) => {
-    if(!currentUser) {
+    if (currentUser.id > 0) {
       return <Navigate to="/login" />
     };
 
