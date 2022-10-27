@@ -1,41 +1,67 @@
+@import "../../style.scss";
+
 .leftBar {
-    .container {
-        padding: 20px;
+    @include themify($themes) {
+        position: sticky;
+        top: 70px;
+        flex: 2;
+        height: calc(100vh - 70px);
+        overflow: scroll;
+        background-color: themed("bg");
+        color: themed("textColor");
 
-        .menu {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
-            .user {
-                display: flex;
-                align-items: center;
-                gap: 10px;
+        .container {
+            padding: 20px;
 
-                img {
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                span {
-                    display: flex;
-                    
-                }
+            hr {
+                margin: 20px 0px;
+                border: none;
+                height: .5px;
+                background-color: themed("border");
             }
 
-            .item {
+            .menu {
                 display: flex;
-                align-items: center;
-                gap: 10px;
-    
-                svg {
-                    width: 30px;
-                }
-    
+                flex-direction: column;
+                gap: 20px;
+
                 span {
-    
+                    font-size: 12px;
+                }
+
+                .user {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    span {
+                        font-size: 14px;
+                    }
+                }
+
+                .item {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+        
+                    svg {
+                        width: 30px;
+                    }
+        
+                    span {
+                        font-size: 14px;
+                    }
                 }
             }
         }

@@ -2,11 +2,21 @@ import "./leftbar.scss";
 
 import React from "react";
 
-import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
-import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
-import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
-import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
-import TimerOutlinedIcon from '@mui/icons-material/TimerOutlined';
+import {
+  GroupAddOutlined,
+  GroupsOutlined,
+  LocalGroceryStoreOutlined,
+  PlayCircleOutlineOutlined,
+  TimerOutlined,
+  CalendarMonthOutlined,
+  SportsEsportsOutlined,
+  CollectionsOutlined,
+  VideocamOutlined,
+  ForumOutlined,
+  FactoryOutlined,
+  VideoFileOutlined,
+  OndemandVideoOutlined  
+} from '@mui/icons-material';
 
 export function Leftbar() {
   return (
@@ -15,28 +25,67 @@ export function Leftbar() {
         <div className="menu">
           <div className="user">
             <img src="https://thispersondoesnotexist.com/image" alt="avatar" />
+            <span>Username</span>
           </div>
-          <span>Username</span>
-        
           <div className="item">
-            <GroupAddOutlinedIcon />
+            <GroupAddOutlined />
             <span>Friends</span>
           </div>
           <div className="item">
-            <GroupsOutlinedIcon />
+            <GroupsOutlined />
             <span>Groups</span>
           </div>
           <div className="item">
-            <LocalGroceryStoreOutlinedIcon />
+            <LocalGroceryStoreOutlined />
             <span>Marketplace</span>
           </div>
           <div className="item">
-            <PlayCircleOutlineOutlinedIcon />
+            <PlayCircleOutlineOutlined />
             <span>Watch</span>
           </div>
           <div className="item">
-            <TimerOutlinedIcon />
+            <TimerOutlined />
             <span>Memories</span>
+          </div>
+        </div>
+        <hr />
+        <div className="menu">
+          <span>Your shortcuts</span>
+          <div className="item">
+            <CalendarMonthOutlined />
+            <span>Events</span>
+          </div>
+          <div className="item">
+            <SportsEsportsOutlined />
+            <span>Gaming</span>
+          </div>
+          <div className="item">
+            <CollectionsOutlined />
+            <span>Gallery</span>
+          </div>
+          <div className="item">
+            <VideocamOutlined />
+            <span>Videos</span>
+          </div>
+          <div className="item">
+            <ForumOutlined />
+            <span>Messages</span>
+          </div>
+        </div>
+        <hr />
+        <div className="menu">
+          <span>Others</span>
+          <div className="item">
+            <FactoryOutlined />
+            <span>Fundraiser</span>
+           </div>
+          <div className="item">
+            <VideoFileOutlined />
+            <span>Tutorials</span>
+          </div>
+          <div className="item">
+            <OndemandVideoOutlined />
+            <span>Courses</span>
           </div>
         </div>
       </div>
