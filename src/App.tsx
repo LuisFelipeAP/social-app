@@ -1,5 +1,7 @@
 import './App.css';
 
+import React from "react"
+
 import { Login } from './pages/login/Login';
 import { Register } from './pages/register/Register';
 import { Home } from './pages/home/Home';
@@ -35,7 +37,7 @@ function App() {
     );
   };
 
-  const ProtectedRoute = ({ children }) => {
+  const ProtectedRoute = ({ children }: {children: JSX.Element}) => {
     if (currentUser.id > 0) {
       return <Navigate to="/login" />
     };
