@@ -1,6 +1,8 @@
+import React, { useContext } from "react";
+
 import "./leftbar.scss";
 
-import React from "react";
+import { AuthContext, AuthContextInterface } from "../../context/auth";
 
 import {
   GroupAddOutlined,
@@ -19,13 +21,15 @@ import {
 } from '@mui/icons-material';
 
 export function Leftbar() {
+  const { user } = useContext<AuthContextInterface>(AuthContext);
+
   return (
     <div className="leftBar">
       <div className="container">
         <div className="menu">
           <div className="user">
-            <img src="https://thispersondoesnotexist.com/image" alt="avatar" />
-            <span>Username</span>
+            <img src={user.avatar} alt="avatar" />
+            <span>{user.username}</span>
           </div>
           <div className="item">
             <GroupAddOutlined />

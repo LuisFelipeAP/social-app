@@ -1,5 +1,10 @@
-import "./navbar.scss";
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
+import "./navbar.scss";
+
+import { DarkModeContext, DarkModeContextInterface } from "../../context/DarkModeContext";
+import { AuthContext, AuthContextInterface } from "../../context/auth";
 
 import {
   HomeOutlined,
@@ -12,19 +17,15 @@ import {
   SearchOutlined,
 } from '@mui/icons-material';
 
-import { Link } from "react-router-dom";
-import { DarkModeContext, DarkModeContextInterface } from "../../context/DarkModeContext";
-import { AuthContext, AuthContextInterface } from "../../context/auth";
-
 export function Navbar() {
   const { toggleDarkMode, darkMode } = useContext<DarkModeContextInterface>(DarkModeContext);
 
-  const { logout } = useContext<AuthContextInterface>(AuthContext);
+  const { user } = useContext<AuthContextInterface>(AuthContext);
 
   return (
     <div className="navbar">
       <div className="left">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <span>socialapp</span>
         </Link>
         <HomeOutlined />
@@ -44,8 +45,8 @@ export function Navbar() {
         <EmailOutlined />
         <NotificationsOutlined />
         <div className="user">
-          <img src="https://thispersondoesnotexist.com/image" alt="avatar" />
-          <span onClick={logout}>Logout</span>
+          <img src={user.avatar} alt="avatar" />
+          <span>{user.username}</span>
         </div>
       </div>
     </div>
