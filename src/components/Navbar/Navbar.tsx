@@ -14,9 +14,12 @@ import {
 
 import { Link } from "react-router-dom";
 import { DarkModeContext, DarkModeContextInterface } from "../../context/DarkModeContext";
+import { AuthContext, AuthContextInterface } from "../../context/auth";
 
 export function Navbar() {
   const { toggleDarkMode, darkMode } = useContext<DarkModeContextInterface>(DarkModeContext);
+
+  const { logout } = useContext<AuthContextInterface>(AuthContext);
 
   return (
     <div className="navbar">
@@ -42,7 +45,7 @@ export function Navbar() {
         <NotificationsOutlined />
         <div className="user">
           <img src="https://thispersondoesnotexist.com/image" alt="avatar" />
-          <span>Username</span>
+          <span onClick={logout}>Logout</span>
         </div>
       </div>
     </div>

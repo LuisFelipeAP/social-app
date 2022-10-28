@@ -1,7 +1,17 @@
+import React, { useContext } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+
 import './App.css';
 import "./style.scss";
 
-import React, { useContext } from "react";
+import { DarkModeContext, DarkModeContextInterface } from "./context/DarkModeContext";
+import { AuthContext, AuthContextInterface } from './context/auth';
+import { AuthManager } from './manager/AuthManager';
 
 import { Login } from './pages/login/Login';
 import { Register } from './pages/register/Register';
@@ -12,22 +22,8 @@ import { Leftbar } from './components/Leftbar/Leftbar';
 import { Rightbar } from './components/Rightbar/Rightbar';
 import { Navbar } from './components/Navbar/Navbar';
 
-
-import { DarkModeContext, DarkModeContextInterface } from "./context/DarkModeContext";
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Outlet,
-  Navigate,
-} from "react-router-dom";
-
 function App() {
-  const currentUser = {
-    id: -1,
-  };
-
+  const { user } = useContext<AuthContextInterface>(AuthContext);
   const { darkMode } = useContext<DarkModeContextInterface>(DarkModeContext);
 
   const Layout = () => {
@@ -36,7 +32,7 @@ function App() {
         <Navbar />
         <div style={{ display: "flex" }}>
           <Leftbar />
-          <div style={{flex: "6"}}>
+          <div style={{ flex: "6" }}>
             <Outlet />
           </div>
           <Rightbar />
@@ -45,11 +41,10 @@ function App() {
     );
   };
 
-  const ProtectedRoute = ({ children }: {children: JSX.Element}) => {
-    if (currentUser.id > 0) {
+  const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+    if (!user.isAuth()) {
       return <Navigate to="/login" />;
     }
-
     return children;
   };
 
@@ -57,13 +52,15 @@ function App() {
     {
       path: "/",
       element: (
-        <ProtectedRoute>
-          <Layout />
-        </ProtectedRoute>
+        <AuthManager>
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>
+        </AuthManager>
       ),
       children: [
         {
-          path: "/",
+          path: "/home",
           element: <Home />
         },
         {
@@ -74,7 +71,10 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element:
+        <AuthManager>
+          <Login />
+        </AuthManager>,
     },
     {
       path: "/register",
