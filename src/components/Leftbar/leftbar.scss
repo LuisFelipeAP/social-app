@@ -4,7 +4,7 @@
     @include themify($themes) {
         position: sticky;
         top: 70px;
-        flex: 2;
+        flex: 1.5;
         height: calc(100vh - 70px);
         overflow: scroll;
         background-color: themed("bg");

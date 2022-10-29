@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 import "./navbar.scss";
@@ -18,8 +19,8 @@ import {
 } from '@mui/icons-material';
 
 export function Navbar() {
+  let navigate = useNavigate();
   const { toggleDarkMode, darkMode } = useContext<DarkModeContextInterface>(DarkModeContext);
-
   const { user } = useContext<AuthContextInterface>(AuthContext);
 
   return (
@@ -28,11 +29,11 @@ export function Navbar() {
         <Link to="/home" style={{ textDecoration: "none" }}>
           <span>socialapp</span>
         </Link>
-        <HomeOutlined />
+        <HomeOutlined onClick={() => navigate("/home")} style={{cursor: "pointer"}} />
         {darkMode ? (
-          <WbSunnyOutlined onClick={toggleDarkMode} />
+          <WbSunnyOutlined onClick={toggleDarkMode} style={{cursor: "pointer"}} />
         ) : (
-          <DarkModeOutlined onClick={toggleDarkMode} />
+          <DarkModeOutlined onClick={toggleDarkMode} style={{cursor: "pointer"}} />
         )}
         <GridViewOutlined />
         <div className="search">

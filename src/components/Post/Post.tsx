@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./post.scss";
 
-import { Posts } from "../Posts/Posts"
-import { Link } from "react-router-dom";
+import { Comments } from "../Comments/Comments";
 
 import { 
   MoreHorizOutlined,
@@ -14,7 +14,8 @@ import {
 } from '@mui/icons-material/';
 
 export function Post({ post }) {
-  const liked = false;
+  const [isLiked, setLiked] = useState(false);
+  const [isCommentOpen, setCommentOpen] = useState(false)
   
   return (
     <div className="post">
@@ -36,11 +37,11 @@ export function Post({ post }) {
           <img src={post.coverPicture} alt="cover picture" />
         </div>
         <div className="info">
-          <div className="item">
-            {liked ? <FavoriteOutlined /> : <FavoriteBorderOutlined />}
+          <div className="item" onClick={() => setLiked(!isLiked)}>
+            {isLiked ? <FavoriteOutlined /> : <FavoriteBorderOutlined />}
             12 Likes
           </div>
-          <div className="item">
+          <div className="item" onClick={() => setCommentOpen(!isCommentOpen)}>
             <TextsmsOutlined />
             12 Comments
           </div>
@@ -49,6 +50,7 @@ export function Post({ post }) {
             Share
           </div>
         </div>
+        {isCommentOpen && <Comments />}
       </div>
     </div>
   )
